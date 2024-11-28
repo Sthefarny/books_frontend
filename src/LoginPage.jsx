@@ -1,13 +1,39 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import livroImg from './imagens/livro.png';
+
 
 const LoginContainer = styled.div`
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to right, #f5f5f5, #ffffff);
+  
+`;
+
+// Estilo para a imagem
+const ImageContainer = styled.div`
+  flex: 1; /* Ocupa metade da tela */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #db7093;
+
+  img {
+    width: 60%; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+  }
+`;
+
+// Estilo para o formulário
+const FormContainer = styled.div`
+  flex: 1; /* Ocupa metade da tela */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #db7093;
+  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
 `;
 
 const Input = styled.input`
@@ -31,6 +57,8 @@ const Button = styled.button`
   }
 `;
 
+
+
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -51,7 +79,11 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <LoginContainer>
-      <h2>Login</h2>
+    <ImageContainer>
+        <img src={livroImg} alt="Livro" />
+      </ImageContainer>
+      <FormContainer>
+      <h2>Acesse</h2>
       <Input
         type="text"
         placeholder="Usuário"
@@ -65,6 +97,7 @@ const LoginPage = ({ onLogin }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button onClick={handleLogin}>Entrar</Button>
+      </FormContainer>
     </LoginContainer>
   );
 };
